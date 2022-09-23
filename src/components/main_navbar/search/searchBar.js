@@ -1,4 +1,4 @@
-function TopRight() {
+function SearchBar() {
   return (
     <div className="flex border-2 mx-4 h-12 items-center px-4 rounded-full shadow-lg justify-between md:w-96 w-full">
       <div className="md:hidden block">
@@ -28,22 +28,22 @@ function TopRight() {
         </ul>
       </div>
       <div className="mr-8 hidden md:flex">
-        <ul className="flex font-extralight text-sm gap-1">
+        <ul className="flex font-normal text-base gap-3">
           <li>Anywhere</li>
-          <li>&#183;</li>
+          <li className="bg-gray-200 w-0.5" />
           <li>Any week</li>
-          <li>&#183;</li>
-          <li>Add guest</li>
+          <li className="bg-gray-200 w-0.5" />
+          <li className=" text-gray-400">Add guest</li>
         </ul>
       </div>
-      <div className="md:block hidden bg-red-500 p-3 rounded full">
+      <div className="md:block hidden p-2 bg-red-500 rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-5 h-5 text-white"
+          className="w-4 h-4 text-white"
         >
           <path
             strokeLinecap="round"
@@ -72,4 +72,4 @@ function TopRight() {
   );
 }
 
-export default TopRight;
+export default SearchBar;
