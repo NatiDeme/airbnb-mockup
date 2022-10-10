@@ -1,101 +1,65 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 
-const slideStyles = {
-  width: '90%',
-  height: '200px',
-  borderRadius: '27px',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  margin: '20px',
-};
-
-const rightArrowStyles = {
-  position: 'absolute',
-  top: '50%',
-  transform: 'translate(0, -50%)',
-  right: '32px',
-  fontSize: '45px',
-  color: '#fff',
-  zIndex: 1,
-  cursor: 'pointer',
-};
-
-const leftArrowStyles = {
-  position: 'absolute',
-  top: '50%',
-  transform: 'translate(0, -50%)',
-  left: '32px',
-  fontSize: '45px',
-  color: '#fff',
-  zIndex: 1,
-  cursor: 'pointer',
-};
-
-const sliderStyles = {
-  position: 'relative',
-  height: '100%',
-};
-
-const dotsContainerStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-};
-
-const dotStyle = {
-  margin: '0 3px',
-  cursor: 'pointer',
-  fontSize: '20px',
-};
-
-const HomeCard = (props) => {
-  const me = props;
-  const mee = me.slides;
+function HomeCard(props) {
+  const modal = props;
+  const slideModal = modal.slides;
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  for (let i = 0; i < slideModal[currentIndex].links.length; i += 1) {
+    console.log(slideModal[currentIndex].links.url);
+  }
+
+  const slideBackground = {
+
+    backgroundImage: `url(${slideModal[currentIndex].links[currentIndex].url})`,
+  };
+
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? mee.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? slideModal.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
   const goToNext = () => {
-    const isLastSlide = currentIndex === mee.length - 1;
+    const isLastSlide = currentIndex === slideModal.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-  const slideStylesWidthBackground = {
-    ...slideStyles,
-    backgroundImage: `url(${mee[currentIndex].url})`,
-  };
 
   return (
-    <div style={sliderStyles}>
-      <div>
-        <div onClick={goToPrevious} style={leftArrowStyles}>
-          ❰
-        </div>
-        <div onClick={goToNext} style={rightArrowStyles}>
-          ❱
-        </div>
-      </div>
-      <div style={slideStylesWidthBackground} />
-      <div style={dotsContainerStyles}>
-        {mee.map((slide, slideIndex) => (
-          <div
-            style={dotStyle}
-            key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
-          >
-            ●
+    <div>
+      {slideModal.map((i) => (
+        <div className="relative h-full" key={i}>
+          <div>
+            <button
+              onClick={goToPrevious}
+              type="button"
+              className="absolute top-1/3 anslate-x-2/4 translate-y-0 left-10 text-4xl text-white md:z-50 cursor-pointer"
+            >
+              ❰
+            </button>
+            <button
+              onClick={goToNext}
+              type="button"
+              className="absolute top-1/3 translate-x-2/4 translate-y-0 right-16 text-4xl text-white md:z-50 cursor-pointer"
+            >
+              ❱
+            </button>
           </div>
-        ))}
-      </div>
+          <div
+            style={slideBackground}
+            className=" h-52 rounded-3xl bg-cover bg-center m-5 sm:w-80"
+          />
+          <p>
+            {i.name}
+          </p>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default HomeCard;
