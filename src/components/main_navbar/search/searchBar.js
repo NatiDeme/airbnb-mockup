@@ -1,6 +1,6 @@
 function SearchBar() {
   return (
-    <div className="flex border-2 mx-4 h-12 items-center px-4 rounded-full shadow-lg justify-between md:w-96 w-full">
+    <div className="flex border-2 mx-4 h-14 items-center px-4 rounded-full shadow-lg justify-between md:w-96 w-full">
       <div className="md:hidden block">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ function SearchBar() {
           />
         </svg>
       </div>
-      <div className="mr-8 md:hidden">
+      <div className="ml-3 md:hidden">
         <p className="text-sm font-semibold">Where to?</p>
         <ul className="flex font-extralight text-sm gap-1">
           <li>Anywhere</li>
